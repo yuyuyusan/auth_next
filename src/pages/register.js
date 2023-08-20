@@ -13,8 +13,8 @@ const Registar = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    // const res = await fetch('https://auth-next-ochre.vercel.app/api/register', {
-    const res = await fetch('http://localhost:3000/api/register', {
+    const res = await fetch('https://auth-next-ochre.vercel.app/api/register', {
+    // const res = await fetch('http://localhost:3000/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
