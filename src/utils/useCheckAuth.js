@@ -11,7 +11,6 @@ const useAuthCheck = () => {
     if (!token) {
       router.push('/login');
     }
-
     try {
       const decoded = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY);
       console.log('ログイン画面です',decoded);
