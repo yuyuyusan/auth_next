@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-
 const Registar = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const router = useRouter();
 
   const submitHandler = (e) => {
     e.preventDefault();
     
-    fetch(process.env.API_REGISTER, {
+    fetch('https://auth-yu.vercel.app/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
