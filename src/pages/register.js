@@ -7,13 +7,12 @@ const Registar = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  //登録後にログイン画面に移動
   const router = useRouter();
-  //フォームデータをapi側にリクエストを送る
-  const submitHandler = async (e) => {
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    const res = await fetch(process.env.API_REGISTER, {
-    // const res = await fetch('http://localhost:3000/api/register', {
+    
+    fetch(process.env.API_REGISTER, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,14 +22,19 @@ const Registar = () => {
         email,
         password,
       }),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.created) {
+        router.push('/login');
+      } else {
+        setError(data.message);
+      }
+    })
+    .catch((error) => {
+      setError('エラーが発生しました。');
+      console.error('APIリクエスト中にエラーが発生しました:', error);
     });
-    //api側のレスポンスを受け取る
-    const data = await res.json();
-    if (data.created) {
-      router.push('/login');
-    } else {
-      setError(data.message);
-    }
   };
 
   const changeHandler = (e) => {

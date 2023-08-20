@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
 const Login = () => {
@@ -6,34 +6,34 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  //ログイン後にトップページへ移動させる
-  //フォームデータをapi側にリクエストを送る
   const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(process.env.API_LOGIN, {
+    try {
+      const res = await fetch(process.env.API_LOGIN, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-    // const res = await fetch('http://localhost:3000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    //api側のレスポンスを受け取る
-    const data = await res.json();
-    if (data.token) {
-      alert('ログイン成功');
-      localStorage.setItem('token', data.token);
-      router.push('/mypage');
-    } else {
-      setError(data.message);
+      const data = await res.json();
+      if (data.token) {
+        alert('ログイン成功');
+        localStorage.setItem('token', data.token);
+        router.push('/mypage');
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      setError('エラーが発生しました。');
+      console.error('APIリクエスト中にエラーが発生しました:', error);
     }
   };
 
