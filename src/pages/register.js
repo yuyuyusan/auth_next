@@ -25,7 +25,6 @@ const Registar = () => {
         password,
       }),
     });
-
     //api側のレスポンスを受け取る
     const data = await res.json();
     if (data.created) {
