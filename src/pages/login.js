@@ -13,8 +13,9 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    // const res = await fetch(process.env.API_LOGIN, {
-    const res = await fetch('http://localhost:3000/api/login', {
+    const res = await fetch(process.env.API_LOGIN, {
+
+    // const res = await fetch('http://localhost:3000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ const Registar = () => {
   //フォームデータをapi側にリクエストを送る
   const submitHandler = async (e) => {
     e.preventDefault();
-    const res = await fetch('https://auth-yu.vercel.app/api/register', {
+    const res = await fetch(process.env.API_REGISTER, {
     // const res = await fetch('http://localhost:3000/api/register', {
       method: 'POST',
       headers: {
