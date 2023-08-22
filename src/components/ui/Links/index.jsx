@@ -1,5 +1,5 @@
 import Link from 'next/link';
-
+import styles from './Links.module.css';
 const NAV_ITEMS = [
   { href: '/', label: 'トップ' },
   { href: '/mypage', label: 'マイページ' },
@@ -11,13 +11,13 @@ const HeaderMenu = (props) => {
   return (
     <div className={props.className}>
       <nav>
-        <ul className="mb-10 flex m-auto gap-8 justify-center">
+        <ul className={styles.gnav__list}>
           {NAV_ITEMS.map((item) => {
             return (
-              <li key={item.label}>
+              <li key={item.label} className={styles.gnav__item}>
                 <Link
                   href={item.href}
-                  className="text-xl hover:text-sky-700 tracking-widest font-sans dark:text-slate-5"
+                  className={styles.gnav__item}
                 >
                   {item.label}
                 </Link>

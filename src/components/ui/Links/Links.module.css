@@ -2,8 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  list-style: none;
+  flex-wrap: wrap;
   gap: 20px;
-  margin: 0;
-  padding: 0;
+}
+@media screen and (max-width: 768px) {
+  .gnav__item {
+    font-size: 12px;
+  }
 }

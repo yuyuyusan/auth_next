@@ -12,7 +12,7 @@ export default function Home() {
         <li>
           ※This Serverless Function has timed out.<br />
           現状サーバーレス関数の10秒タイムアウトでエラーが出ます。
-          60秒に一旦変更をしようとしましたが、hobbyプランでは変更できないようで、どうしようか考え中です。
+          60秒に一旦変更をしようとしましたが、hobbyプランでは変更できないようです。
         </li>
       </ul>
     </>
